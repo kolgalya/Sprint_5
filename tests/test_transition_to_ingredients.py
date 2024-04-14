@@ -8,17 +8,13 @@ class TestStellarBurgersIngredient:
         buns = driver.find_element(*Locators.buns)
         assert 'tab_tab_type_current' in buns.get_attribute('class')
 
-
     def test_transition_to_sauce(self, driver):
-        sauce_before = driver.find_element(*Locators.link_sauce)
-        sauce_before.click()
-        sauce_after = driver.find_element(*Locators.sauce)
-        assert sauce_before.get_attribute('class') != sauce_after.get_attribute('class')
-
+        driver.find_element(*Locators.link_sauce).click()
+        sauce = driver.find_element(*Locators.sauce)
+        assert 'tab_tab_type_current' in sauce.get_attribute('class')
 
     def test_transition_to_fillings(self, driver):
-        fillings_before = driver.find_element(*Locators.link_fillings)
-        fillings_before.click()
-        fillings_after = driver.find_element(*Locators.fillings)
-        assert fillings_before.get_attribute('class') != fillings_after.get_attribute('class')
+        driver.find_element(*Locators.link_fillings).click()
+        fillings = driver.find_element(*Locators.fillings)
+        assert 'tab_tab_type_current' in fillings.get_attribute('class')
 
